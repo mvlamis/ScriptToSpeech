@@ -1,35 +1,29 @@
-import tkinter
 import pyttsx3
 from tkinter import *
  
+# Define speak function
 def speak():
     engine = pyttsx3.init()
-    engine.say(testEntry.get())
+    engine.say(scriptEntry.get("1.0",END))
     engine.runAndWait()
+
 
 # Create a GUI window
 root = Tk()
 root.geometry("900x600")
-root.title("Test")
-
+root.title("ScriptToSpeech")
 frame = Frame(root)
 frame.pack()
 
+# Create a text box
+scriptEntry = Text(frame, width = 30, height = 3) 
+scriptEntry.insert(1.0,'Text to speak')
+scriptEntry.pack(padx = 5, pady = 5)
 
-testEntry = Entry(frame, width = 20)
-testEntry.insert(0,'Text to speak')
-testEntry.pack(padx = 5, pady = 5)
-
-Button = Button(frame, text = "Submit", command = speak)
-Button.pack(padx = 5, pady = 5)
+# Create a button to speak
+speakButton = Button(frame, text = "Submit", command = speak)
+speakButton.pack(padx = 5, pady = 5)
 
 root.mainloop()
 
-
-# engine = pyttsx3.init()
-# voices = engine.getProperty('voices')
-# engine.say('The quick brown fox jumped over the lazy dog.')
-# engine.runAndWait()
-
-# engine.runAndWait()
 
